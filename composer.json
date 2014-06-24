@@ -1,0 +1,12 @@
+{
+    "name": "netgen/htmlpdfapi",
+    "description": "Netgen HTMLPDFAPI bundle",
+    "require": {
+        "guzzle/guzzle": "~3.9"
+    },
+    "minimum-stability": "dev",
+    "target-dir": "Netgen/HtmlPdfApi",
+    "autoload": {
+        "psr-0": { "Netgen\\HtmlPdfApi": "" }
+    }
+}

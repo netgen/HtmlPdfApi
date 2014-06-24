@@ -1,0 +1,842 @@
+{
+    "name": "HTMLPDFAPI",
+    "apiVersion": "v1",
+    "description": "HTMLPDF Api",
+    "operations":
+    {
+        "GenerateFromURL": {
+            "httpMethod": "POST",
+            "uri": "pdf",
+            "summary": "Generates PDF from URL",
+            "parameters":{
+                "url": {
+                    "required": true,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "URL from which to generate PDF"
+                },
+                "filename":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Name of a generated PDF file"
+                },
+                "footer":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Footer in HTML - optional"
+                },
+                "header":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Header in HTML - optional"
+                },
+                "header_spacing":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "description": "Spacing between header and content in millimeters (mm)"
+                },
+                "footer_spacing":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 2,
+                    "description": "Spacing between footer and content in millimeters (mm)"
+                },
+                "page_size":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "default": "A4",
+                    "description": "One of the standard page sizes (A4, A0, B5, Letter...)"
+                },
+                "dpi":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "minimum": 75,
+                    "default": 75,
+                    "description": "DPI of generated PDF document."
+                },
+                "image_dpi":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 600,
+                    "description": "DPI to which scale embedded images."
+                },
+                "lowquality":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 0,
+                    "enum": [ 0, 1 ],
+                    "description": "Generate low quality PDF document from HTML."
+                },
+                "orientation":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "enum": [ "portrait", "landscape" ],
+                    "defaule": "portrait",
+                    "description": "Orientation of all pages in PDF"
+                },
+                "margin_top":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 10,
+                    "description": "Top margin of PDF (in mm)"
+                },
+                "margin_bottom":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 10,
+                    "description": "Bottom margin of PDF (in mm)"
+                },
+                "margin_right":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 10,
+                    "description": "Right margin of PDF (in mm)"
+                },
+                "margin_left":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 10,
+                    "description": "Left margin of PDF (in mm)"
+                },
+                "background":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "Enable background in the PDF document."
+                },
+                "images":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "Load and print images."
+                },
+                "page_width":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "description": "Custom page width. Must be set in combination with page_height"
+                },
+                "page_height":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "description": "Custom page height. Must be set in combination with page_width"
+                },
+                "disposition":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "string",
+                    "enum": [ "attachment", "inline" ],
+                    "default": "attachment",
+                    "description": "Content-Disposition of a returned PDF file"
+                },
+                "group":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Name of a group (client)"
+                },
+                "engine_version":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "minimum": 11,
+                    "maximum": 12,
+                    "default": 11,
+                    "description": "Version of html to pdf engine."
+                },
+                "title":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Title of the generated PDF file. Defaults to title of the HTML document."
+                },
+                "outline":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "Create outline / index in generated PDF document."
+                },
+                "outline_depth":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 4,
+                    "description": "Outline depth."
+                },
+                "encoding":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "string",
+                    "default": "utf-8",
+                    "description": "Text encoding in PDF."
+                },
+                "javascript":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "Enable javascript execution. Default is true."
+                },
+                "javascript_delay":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 800,
+                    "default": 200,
+                    "description": "Time to wait for javascript to finish (default 200ms)."
+                },
+                "internal_links":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "HTML anchor linking in PDF document."
+                },
+                "external_links":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "External links in the PDF document."
+                },
+                "page_offset":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 0,
+                    "description": "Starting page number in the PDF document."
+                },
+                "username":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Username for HTTP basic authentication."
+                },
+                "password":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Password for HTTP basic authentication."
+                },
+                "use_print_media":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 0,
+                    "enum": [ 0, 1 ],
+                    "description": "Use print media type instead of screen"
+                },
+                "zoom":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "number",
+                    "default": 1,
+                    "description": "Browser page zoom factor. Float format, e.g. 1.2"
+                },
+                "viewport_size":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "pattern": "^\\d+x\\d+$"
+                }
+            }
+        },
+        "GenerateFromHTML": {
+            "httpMethod": "POST",
+            "uri": "pdf",
+            "summary": "Generates PDF from HTML string",
+            "parameters":{
+                "html": {
+                    "required": true,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "HTML string from which to generate PDF"
+                },
+                "filename":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Name of a generated PDF file"
+                },
+                "footer":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Footer in HTML - optional"
+                },
+                "header":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Header in HTML - optional"
+                },
+                "header_spacing":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "description": "Spacing between header and content in millimeters (mm)"
+                },
+                "footer_spacing":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 2,
+                    "description": "Spacing between footer and content in millimeters (mm)"
+                },
+                "page_size":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "default": "A4",
+                    "description": "One of the standard page sizes (A4, A0, B5, Letter...)"
+                },
+                "dpi":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "minimum": 75,
+                    "default": 75,
+                    "description": "DPI of generated PDF document."
+                },
+                "image_dpi":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 600,
+                    "description": "DPI to which scale embedded images."
+                },
+                "lowquality":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 0,
+                    "enum": [ 0, 1 ],
+                    "description": "Generate low quality PDF document from HTML."
+                },
+                "orientation":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "enum": [ "portrait", "landscape" ],
+                    "defaule": "portrait",
+                    "description": "Orientation of all pages in PDF"
+                },
+                "margin_top":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 10,
+                    "description": "Top margin of PDF (in mm)"
+                },
+                "margin_bottom":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 10,
+                    "description": "Bottom margin of PDF (in mm)"
+                },
+                "margin_right":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 10,
+                    "description": "Right margin of PDF (in mm)"
+                },
+                "margin_left":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 10,
+                    "description": "Left margin of PDF (in mm)"
+                },
+                "background":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "Enable background in the PDF document."
+                },
+                "images":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "Load and print images."
+                },
+                "page_width":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "description": "Custom page width. Must be set in combination with page_height"
+                },
+                "page_height":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "description": "Custom page height. Must be set in combination with page_width"
+                },
+                "disposition":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "string",
+                    "enum": [ "attachment", "inline" ],
+                    "default": "attachment",
+                    "description": "Content-Disposition of a returned PDF file"
+                },
+                "group":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Name of a group (client)"
+                },
+                "engine_version":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "minimum": 11,
+                    "maximum": 12,
+                    "default": 11,
+                    "description": "Version of html to pdf engine."
+                },
+                "title":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Title of the generated PDF file. Defaults to title of the HTML document."
+                },
+                "outline":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "Create outline / index in generated PDF document."
+                },
+                "outline_depth":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 4,
+                    "description": "Outline depth."
+                },
+                "encoding":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "string",
+                    "default": "utf-8",
+                    "description": "Text encoding in PDF."
+                },
+                "javascript":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "Enable javascript execution. Default is true."
+                },
+                "javascript_delay":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 800,
+                    "default": 200,
+                    "description": "Time to wait for javascript to finish (default 200ms)."
+                },
+                "internal_links":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "HTML anchor linking in PDF document."
+                },
+                "external_links":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "External links in the PDF document."
+                },
+                "page_offset":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 0,
+                    "description": "Starting page number in the PDF document."
+                },
+                "username":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Username for HTTP basic authentication."
+                },
+                "password":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Password for HTTP basic authentication."
+                },
+                "use_print_media":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 0,
+                    "enum": [ 0, 1 ],
+                    "description": "Use print media type instead of screen"
+                },
+                "zoom":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "number",
+                    "default": 1,
+                    "description": "Browser page zoom factor. Float format, e.g. 1.2"
+                },
+                "viewport_size":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "pattern": "^\\d+x\\d+$"
+                }
+            }
+        },
+        "GenerateFromFile": {
+            "httpMethod": "POST",
+            "uri": "pdf",
+            "summary": "Generates PDF from file",
+            "parameters":{
+                "file": {
+                    "required": true,
+                    "location": "postFile",
+                    "type": "string",
+                    "description": "Path to file"
+                },
+                "filename":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Name of a generated PDF file"
+                },
+                "footer":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Footer in HTML - optional"
+                },
+                "header":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Header in HTML - optional"
+                },
+                "header_spacing":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "description": "Spacing between header and content in millimeters (mm)"
+                },
+                "footer_spacing":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 2,
+                    "description": "Spacing between footer and content in millimeters (mm)"
+                },
+                "page_size":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "default": "A4",
+                    "description": "One of the standard page sizes (A4, A0, B5, Letter...)"
+                },
+                "dpi":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "minimum": 75,
+                    "default": 75,
+                    "description": "DPI of generated PDF document."
+                },
+                "image_dpi":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 600,
+                    "description": "DPI to which scale embedded images."
+                },
+                "lowquality":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 0,
+                    "enum": [ 0, 1 ],
+                    "description": "Generate low quality PDF document from HTML."
+                },
+                "orientation":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "enum": [ "portrait", "landscape" ],
+                    "defaule": "portrait",
+                    "description": "Orientation of all pages in PDF"
+                },
+                "margin_top":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 10,
+                    "description": "Top margin of PDF (in mm)"
+                },
+                "margin_bottom":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 10,
+                    "description": "Bottom margin of PDF (in mm)"
+                },
+                "margin_right":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 10,
+                    "description": "Right margin of PDF (in mm)"
+                },
+                "margin_left":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 10,
+                    "description": "Left margin of PDF (in mm)"
+                },
+                "background":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "Enable background in the PDF document."
+                },
+                "images":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "Load and print images."
+                },
+                "page_width":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "description": "Custom page width. Must be set in combination with page_height"
+                },
+                "page_height":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "description": "Custom page height. Must be set in combination with page_width"
+                },
+                "disposition":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "string",
+                    "enum": [ "attachment", "inline" ],
+                    "default": "attachment",
+                    "description": "Content-Disposition of a returned PDF file"
+                },
+                "group":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Name of a group (client)"
+                },
+                "engine_version":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "minimum": 11,
+                    "maximum": 12,
+                    "default": 11,
+                    "description": "Version of html to pdf engine."
+                },
+                "title":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Title of the generated PDF file. Defaults to title of the HTML document."
+                },
+                "outline":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "Create outline / index in generated PDF document."
+                },
+                "outline_depth":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 4,
+                    "description": "Outline depth."
+                },
+                "encoding":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "string",
+                    "default": "utf-8",
+                    "description": "Text encoding in PDF."
+                },
+                "javascript":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "Enable javascript execution. Default is true."
+                },
+                "javascript_delay":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 800,
+                    "default": 200,
+                    "description": "Time to wait for javascript to finish (default 200ms)."
+                },
+                "internal_links":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "HTML anchor linking in PDF document."
+                },
+                "external_links":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 1,
+                    "enum": [ 0, 1 ],
+                    "description": "External links in the PDF document."
+                },
+                "page_offset":{
+                    "required" : false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 0,
+                    "description": "Starting page number in the PDF document."
+                },
+                "username":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Username for HTTP basic authentication."
+                },
+                "password":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "description": "Password for HTTP basic authentication."
+                },
+                "use_print_media":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "integer",
+                    "default": 0,
+                    "enum": [ 0, 1 ],
+                    "description": "Use print media type instead of screen"
+                },
+                "zoom":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "number",
+                    "default": 1,
+                    "description": "Browser page zoom factor. Float format, e.g. 1.2"
+                },
+                "viewport_size":{
+                    "required": false,
+                    "location": "postField",
+                    "type": "string",
+                    "pattern": "^\\d+x\\d+$"
+                }
+            }
+        },
+        "GetCredits": {
+            "httpMethod": "GET",
+            "uri": "credits",
+            "summary": "Get credits count"
+        },
+        "UploadAsset": {
+            "httpMethod": "POST",
+            "uri": "assets",
+            "summary": "Create new asset",
+            "parameters":{
+                "file":{
+                    "required": true,
+                    "location": "postFile",
+                    "description": "Asset (js, css, png, jpg, jpeg, gif, ttf, otf, woff) to upload"
+                }
+            }
+        },
+        "GetAsset":{
+            "httpMethod": "GET",
+            "uri": "assets/{id}",
+            "summary": "Get asset by id",
+            "parameters": {
+                "id":{
+                    "location": "uri",
+                    "required": true,
+                    "description": "Asset id",
+                    "type": "string"
+                }
+            }
+        },
+        "DeleteAsset":{
+            "httpMethod": "DELETE",
+            "uri": "assets/{id}",
+            "summary": "Delete asset by id",
+            "parameters":{
+                "id":{
+                    "location": "uri",
+                    "required": true,
+                    "description": "Asset id",
+                    "type": "string"
+                }
+            }
+        },
+        "GetAssetList":{
+            "httpMethod": "GET",
+            "uri": "assets",
+            "summary": "Get list of assets"
+        }
+    }
+}
