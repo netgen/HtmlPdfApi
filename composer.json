@@ -1,6 +1,6 @@
 {
     "name": "netgen/htmlpdfapi",
-    "description": "Netgen HTMLPDFAPI bundle",
+    "description": "Netgen HTMLPDFAPI",
     "require": {
         "guzzle/guzzle": "~3.9",
         "symfony/finder": "2.3.*"
