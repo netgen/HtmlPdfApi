@@ -2,7 +2,8 @@
     "name": "netgen/htmlpdfapi",
     "description": "Netgen HTMLPDFAPI bundle",
     "require": {
-        "guzzle/guzzle": "~3.9"
+        "guzzle/guzzle": "~3.9",
+        "symfony/finder": "2.3.*"
     },
     "minimum-stability": "dev",
     "target-dir": "Netgen/HtmlPdfApi",
