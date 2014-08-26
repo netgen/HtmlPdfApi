@@ -12,7 +12,7 @@ interface HttpClientInterface {
      * @param array $params     Parameters
      * @param string $method    Method of the request
      *
-     * @return  response        Response
+     * @return  string          Response
      */
     public function sendRequest($url, $params, $method);
 } 
