@@ -46,7 +46,7 @@ class Guzzle extends Client implements HttpClientInterface {
      * @param string $url       Relative url for the request
      * @param array $params     Parameters for the request
      * @param string $method    Method for the request
-     * @return array|\Guzzle\Http\Message\Response|\Netgen\HtmlPdfApiBundle\Component\response
+     * @return string           Response body
      * @throws \Exception
      */
     public function sendRequest($url, $params, $method)
@@ -70,10 +70,11 @@ class Guzzle extends Client implements HttpClientInterface {
                 }
             }
         }
+        
         try{
             $command = $this->getCommand($commandName, $params);
             $ret = $this->execute($command);
-            return $ret;
+            return $ret->getBody(true);
         }catch(ClientErrorResponseException $exception){
             throw new \Exception($exception->getResponse()->getBody(true), $exception->getResponse()->getStatusCode());
         }
