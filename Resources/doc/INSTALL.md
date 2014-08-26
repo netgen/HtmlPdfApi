@@ -12,6 +12,6 @@ Add the following to your composer.json and run `php composer.phar update netgen
 
 ```json
 "require": {
-    "netgen/htmlpdfapi": "~0.1"
+    "netgen/htmlpdfapi": "~0.2"
 }
 ```

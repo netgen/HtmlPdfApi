@@ -4,7 +4,7 @@ Netgen HtmlPdfApi library Usage Instructions
 HtmlPdfApi exposes [HTML PDF API](https://htmlpdfapi.com) functionalities: you can generate PDF from URL, generate PDF from HTML, manipulate assets on the server or find out how many credits you have left on your account.
 
 Create HTTP client, validator and HtmlPdfApi
------------
+--------------------------------------------
 
 First, create the object. Constructor expects two parameters: HTTP client (which must implement HttpClientInterface) and validator (which must implement ValidatorInterface).
 There are two HttpClients implemented, so you can simply instantiate one of them, and pass it on as a parameter.
@@ -12,15 +12,13 @@ There is also validator implementation, which you can use in the same way.
 
 ```php
 $validator = new HtmlPdfApiValidator();
-$httpClient = new Guzzle($host, $token, $json_location, $root);
+$httpClient = new Guzzle($host, $token, $json_location);
 $htmlPdfApi = new HtmlPdfApi($httpClient, $validator);
 ```
 Guzzle client implementation expects the following parameters:
 * $host - base url of the api
 * $token - security token provided by the [HTML PDF API](https://htmlpdfapi.com)
-* $json_location - path to service.json file (relative to root)
-* $root - root kernel directory
-
+* $json_location - full path to json file containing service description
 
 Generating PDF
 --------------
@@ -68,7 +66,7 @@ $params = array(
 
 ###Note
 
-All three functions return code 200 on success and a pdf file.
+All three functions return pdf file.
 
 Assets
 ------
@@ -82,7 +80,7 @@ To upload an asset, you have to provide full path to the asset:
 $response = $htmlPdfApi->uploadAsset("/path/to/asset");
 ```
 
-On success returns code 201 and json object with asset information (id, name, mime, size).
+On success returns json with asset information (id, name, mime, size).
 
 
 ###Download asset
@@ -91,7 +89,7 @@ To download asset, you can get asset by ID:
 $asset = $htmlPdfApi->getAsset($id);
 ```
 
-On success returns code 200 and the asset as a file.
+On success returns the asset.
 
 ###Delete asset
 You can delete asset by its ID:
@@ -99,7 +97,6 @@ You can delete asset by its ID:
 $response = $htmlPdfApi->deleteAsset($id);
 ```
 
-On success returns code 204.
 
 ###Get asset ID by name
 To find out which ID your asset has:
@@ -115,7 +112,7 @@ You can also get the list of uploaded assets:
 $assets = $htmlPdfApi->getAssetList();
 ```
 
-On success returns code 200 and list of json objects (each containing id, name, mime and size of the asset).
+On success returns list of json objects (each containing id, name, mime and size of the asset).
 
 Credits
 -------
@@ -124,4 +121,4 @@ To find out how many credits you have left on your account:
 $credits = $htmlPdfApi->getCredits();
 ```
 
-On success returns code 200 and the number of available credits.
+On success returns the number of available credits.
