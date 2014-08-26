@@ -16,10 +16,9 @@ class Guzzle extends Client implements HttpClientInterface {
      *
      * @param string $host          Base url of the api
      * @param string $token         Security token
-     * @param string $json_location Path to service.json file
-     * @param string $root          Root kernel directory
+     * @param string $json_location Full path to service.json file
      */
-    public function __construct($host, $token, $json_location, $root)
+    public function __construct($host, $token, $json_location)
     {
         //fallback value
         $default = array(
@@ -35,16 +34,7 @@ class Guzzle extends Client implements HttpClientInterface {
 
         parent::__construct($config['host']);
 
-        $finder = new Finder();
-        $finder->files()->name('service.json')->in($root.$json_location);
-        if ($finder->count() != 1)
-            throw new \Exception("Problem with locating service.json file.");
-        foreach ($finder as $file)
-        {
-            if ($file->getRelativePathname()=="service.json")
-                $json = $file->getRealPath();
-        }
-        $this->setDescription(ServiceDescription::factory($json));
+        $this->setDescription(ServiceDescription::factory($json_location));
 
         $header = array( 'Authentication' => 'Token' . " " . $config->get('token') );
         $this->setDefaultOption("headers", $header);
