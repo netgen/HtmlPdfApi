@@ -126,7 +126,7 @@ class Curl implements HttpClientInterface {
      * @param string $url       Relative url for the request
      * @param array $params     Parameters for the request
      * @param string $method    Request method
-     * @return mixed|\Netgen\HtmlPdfApiBundle\Component\response
+     * @return string
      */
     public function sendRequest($url, $params, $method)
     {
@@ -149,9 +149,12 @@ class Curl implements HttpClientInterface {
             throw new \Exception("Method ".$method." not supported!");
         }
 
-        $ret = curl_exec($ch);
-        curl_close($ch);
+        if (! $ret = curl_exec($ch))
+        {
+            trigger_error(curl_error($ch));
+        }
 
+        curl_close($ch);
         return $ret;
     }
 
