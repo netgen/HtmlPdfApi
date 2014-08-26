@@ -51,30 +51,35 @@ class Guzzle extends Client implements HttpClientInterface {
      */
     public function sendRequest($url, $params, $method)
     {
-        if (!empty($params['html'])){
-            $commandName = 'GenerateFromHTML';
-        }
-        else if (!empty($params['pdf'])){
-            $commandName = 'GenerateFromPDF';
-        }
-        else if (!empty($params['file'])&& $url=='pdf'){
-            $commandName = 'GenerateFromFile';
-        }
-        else {
-            $operations = $this->getDescription()->getOperations();
-            foreach ($operations as $operation)
-            {
-                if ($operation->getUri()==$url && $operation->getHttpMethod() == $method)
+        try{
+            if (!empty($params['html'])){
+                $commandName = 'GenerateFromHTML';
+            }
+            else if (!empty($params['pdf'])){
+                $commandName = 'GenerateFromPDF';
+            }
+            else if (!empty($params['file'])&& $url=='pdf'){
+                $commandName = 'GenerateFromFile';
+            }
+            else {
+                $operations = $this->getDescription()->getOperations();
+                foreach ($operations as $operation)
                 {
-                    $commandName = $operation->getName();
+                    if ($operation->getUri()==$url && $operation->getHttpMethod() == $method)
+                    {
+                        $commandName = $operation->getName();
+                    }
                 }
             }
-        }
-        
-        try{
             $command = $this->getCommand($commandName, $params);
             $ret = $this->execute($command);
+
+            if ( $commandName == 'GetAssetList' || $commandName == 'UploadAsset' )
+            {
+                return json_encode($ret);
+            }
             return $ret->getBody(true);
+
         }catch(ClientErrorResponseException $exception){
             throw new \Exception($exception->getResponse()->getBody(true), $exception->getResponse()->getStatusCode());
         }

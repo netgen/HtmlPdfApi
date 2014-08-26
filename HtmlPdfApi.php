@@ -146,7 +146,7 @@ class HtmlPdfApi {
         $params = $this->validator->validate($params);
 
         try {
-            return $this->client->sendRequest('assets', $params, 'GET');
+            return $this->client->sendRequest('assets/{id}', $params, 'GET');
         } catch (\Exception $ex) {
             throw $ex;
         }
@@ -165,7 +165,7 @@ class HtmlPdfApi {
         $params = $this->validator->validate($params);
 
         try {
-            return $this->client->sendRequest('assets', $params, 'DELETE');
+            return $this->client->sendRequest('assets/{id}', $params, 'DELETE');
         } catch (\Exception $ex) {
             throw $ex;
         }
