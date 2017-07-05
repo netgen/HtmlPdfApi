@@ -55,8 +55,8 @@ class Guzzle extends Client implements HttpClientInterface {
             if (!empty($params['html'])){
                 $commandName = 'GenerateFromHTML';
             }
-            else if (!empty($params['pdf'])){
-                $commandName = 'GenerateFromPDF';
+            else if (!empty($params['url'])){
+                $commandName = 'GenerateFromURL';
             }
             else if (!empty($params['file'])&& $url=='pdf'){
                 $commandName = 'GenerateFromFile';
