@@ -43,14 +43,12 @@
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 2,
                     "description": "Spacing between footer and content in millimeters (mm)"
                 },
                 "page_size":{
                     "required": false,
                     "location": "postField",
                     "type": "string",
-                    "default": "A4",
                     "description": "One of the standard page sizes (A4, A0, B5, Letter...)"
                 },
                 "dpi":{
@@ -58,21 +56,18 @@
                     "location": "postField",
                     "type": "integer",
                     "minimum": 75,
-                    "default": 75,
                     "description": "DPI of generated PDF document."
                 },
                 "image_dpi":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 600,
                     "description": "DPI to which scale embedded images."
                 },
                 "lowquality":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 0,
                     "enum": [ 0, 1 ],
                     "description": "Generate low quality PDF document from HTML."
                 },
@@ -81,42 +76,36 @@
                     "location": "postField",
                     "type": "string",
                     "enum": [ "portrait", "landscape" ],
-                    "defaule": "portrait",
                     "description": "Orientation of all pages in PDF"
                 },
                 "margin_top":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 10,
                     "description": "Top margin of PDF (in mm)"
                 },
                 "margin_bottom":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 10,
                     "description": "Bottom margin of PDF (in mm)"
                 },
                 "margin_right":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 10,
                     "description": "Right margin of PDF (in mm)"
                 },
                 "margin_left":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 10,
                     "description": "Left margin of PDF (in mm)"
                 },
                 "background":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "Enable background in the PDF document."
                 },
@@ -124,7 +113,6 @@
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "Load and print images."
                 },
@@ -145,7 +133,6 @@
                     "location": "postField",
                     "type": "string",
                     "enum": [ "attachment", "inline" ],
-                    "default": "attachment",
                     "description": "Content-Disposition of a returned PDF file"
                 },
                 "group":{
@@ -160,7 +147,6 @@
                     "type": "integer",
                     "minimum": 11,
                     "maximum": 12,
-                    "default": 11,
                     "description": "Version of html to pdf engine."
                 },
                 "title":{
@@ -173,7 +159,6 @@
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "Create outline / index in generated PDF document."
                 },
@@ -181,21 +166,18 @@
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 4,
                     "description": "Outline depth."
                 },
                 "encoding":{
                     "required" : false,
                     "location": "postField",
                     "type": "string",
-                    "default": "utf-8",
                     "description": "Text encoding in PDF."
                 },
                 "javascript":{
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "Enable javascript execution. Default is true."
                 },
@@ -205,14 +187,12 @@
                     "type": "integer",
                     "minimum": 1,
                     "maximum": 800,
-                    "default": 200,
                     "description": "Time to wait for javascript to finish (default 200ms)."
                 },
                 "internal_links":{
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "HTML anchor linking in PDF document."
                 },
@@ -220,7 +200,6 @@
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "External links in the PDF document."
                 },
@@ -228,7 +207,6 @@
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 0,
                     "description": "Starting page number in the PDF document."
                 },
                 "username":{
@@ -247,7 +225,6 @@
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 0,
                     "enum": [ 0, 1 ],
                     "description": "Use print media type instead of screen"
                 },
@@ -255,7 +232,6 @@
                     "required": false,
                     "location": "postField",
                     "type": "number",
-                    "default": 1,
                     "description": "Browser page zoom factor. Float format, e.g. 1.2"
                 },
                 "viewport_size":{
@@ -305,14 +281,12 @@
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 2,
                     "description": "Spacing between footer and content in millimeters (mm)"
                 },
                 "page_size":{
                     "required": false,
                     "location": "postField",
                     "type": "string",
-                    "default": "A4",
                     "description": "One of the standard page sizes (A4, A0, B5, Letter...)"
                 },
                 "dpi":{
@@ -320,21 +294,18 @@
                     "location": "postField",
                     "type": "integer",
                     "minimum": 75,
-                    "default": 75,
                     "description": "DPI of generated PDF document."
                 },
                 "image_dpi":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 600,
                     "description": "DPI to which scale embedded images."
                 },
                 "lowquality":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 0,
                     "enum": [ 0, 1 ],
                     "description": "Generate low quality PDF document from HTML."
                 },
@@ -343,42 +314,36 @@
                     "location": "postField",
                     "type": "string",
                     "enum": [ "portrait", "landscape" ],
-                    "defaule": "portrait",
                     "description": "Orientation of all pages in PDF"
                 },
                 "margin_top":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 10,
                     "description": "Top margin of PDF (in mm)"
                 },
                 "margin_bottom":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 10,
                     "description": "Bottom margin of PDF (in mm)"
                 },
                 "margin_right":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 10,
                     "description": "Right margin of PDF (in mm)"
                 },
                 "margin_left":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 10,
                     "description": "Left margin of PDF (in mm)"
                 },
                 "background":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "Enable background in the PDF document."
                 },
@@ -386,7 +351,6 @@
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "Load and print images."
                 },
@@ -407,7 +371,6 @@
                     "location": "postField",
                     "type": "string",
                     "enum": [ "attachment", "inline" ],
-                    "default": "attachment",
                     "description": "Content-Disposition of a returned PDF file"
                 },
                 "group":{
@@ -422,7 +385,6 @@
                     "type": "integer",
                     "minimum": 11,
                     "maximum": 12,
-                    "default": 11,
                     "description": "Version of html to pdf engine."
                 },
                 "title":{
@@ -435,7 +397,6 @@
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "Create outline / index in generated PDF document."
                 },
@@ -443,21 +404,18 @@
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 4,
                     "description": "Outline depth."
                 },
                 "encoding":{
                     "required" : false,
                     "location": "postField",
                     "type": "string",
-                    "default": "utf-8",
                     "description": "Text encoding in PDF."
                 },
                 "javascript":{
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "Enable javascript execution. Default is true."
                 },
@@ -467,14 +425,12 @@
                     "type": "integer",
                     "minimum": 1,
                     "maximum": 800,
-                    "default": 200,
                     "description": "Time to wait for javascript to finish (default 200ms)."
                 },
                 "internal_links":{
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "HTML anchor linking in PDF document."
                 },
@@ -482,7 +438,6 @@
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "External links in the PDF document."
                 },
@@ -490,7 +445,6 @@
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 0,
                     "description": "Starting page number in the PDF document."
                 },
                 "username":{
@@ -509,7 +463,6 @@
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 0,
                     "enum": [ 0, 1 ],
                     "description": "Use print media type instead of screen"
                 },
@@ -517,7 +470,6 @@
                     "required": false,
                     "location": "postField",
                     "type": "number",
-                    "default": 1,
                     "description": "Browser page zoom factor. Float format, e.g. 1.2"
                 },
                 "viewport_size":{
@@ -567,14 +519,12 @@
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 2,
                     "description": "Spacing between footer and content in millimeters (mm)"
                 },
                 "page_size":{
                     "required": false,
                     "location": "postField",
                     "type": "string",
-                    "default": "A4",
                     "description": "One of the standard page sizes (A4, A0, B5, Letter...)"
                 },
                 "dpi":{
@@ -582,21 +532,18 @@
                     "location": "postField",
                     "type": "integer",
                     "minimum": 75,
-                    "default": 75,
                     "description": "DPI of generated PDF document."
                 },
                 "image_dpi":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 600,
                     "description": "DPI to which scale embedded images."
                 },
                 "lowquality":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 0,
                     "enum": [ 0, 1 ],
                     "description": "Generate low quality PDF document from HTML."
                 },
@@ -605,42 +552,36 @@
                     "location": "postField",
                     "type": "string",
                     "enum": [ "portrait", "landscape" ],
-                    "defaule": "portrait",
                     "description": "Orientation of all pages in PDF"
                 },
                 "margin_top":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 10,
                     "description": "Top margin of PDF (in mm)"
                 },
                 "margin_bottom":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 10,
                     "description": "Bottom margin of PDF (in mm)"
                 },
                 "margin_right":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 10,
                     "description": "Right margin of PDF (in mm)"
                 },
                 "margin_left":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 10,
                     "description": "Left margin of PDF (in mm)"
                 },
                 "background":{
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "Enable background in the PDF document."
                 },
@@ -648,7 +589,6 @@
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "Load and print images."
                 },
@@ -669,7 +609,6 @@
                     "location": "postField",
                     "type": "string",
                     "enum": [ "attachment", "inline" ],
-                    "default": "attachment",
                     "description": "Content-Disposition of a returned PDF file"
                 },
                 "group":{
@@ -684,7 +623,6 @@
                     "type": "integer",
                     "minimum": 11,
                     "maximum": 12,
-                    "default": 11,
                     "description": "Version of html to pdf engine."
                 },
                 "title":{
@@ -697,7 +635,6 @@
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "Create outline / index in generated PDF document."
                 },
@@ -705,21 +642,18 @@
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 4,
                     "description": "Outline depth."
                 },
                 "encoding":{
                     "required" : false,
                     "location": "postField",
                     "type": "string",
-                    "default": "utf-8",
                     "description": "Text encoding in PDF."
                 },
                 "javascript":{
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "Enable javascript execution. Default is true."
                 },
@@ -729,14 +663,12 @@
                     "type": "integer",
                     "minimum": 1,
                     "maximum": 800,
-                    "default": 200,
                     "description": "Time to wait for javascript to finish (default 200ms)."
                 },
                 "internal_links":{
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "HTML anchor linking in PDF document."
                 },
@@ -744,7 +676,6 @@
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 1,
                     "enum": [ 0, 1 ],
                     "description": "External links in the PDF document."
                 },
@@ -752,7 +683,6 @@
                     "required" : false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 0,
                     "description": "Starting page number in the PDF document."
                 },
                 "username":{
@@ -771,7 +701,6 @@
                     "required": false,
                     "location": "postField",
                     "type": "integer",
-                    "default": 0,
                     "enum": [ 0, 1 ],
                     "description": "Use print media type instead of screen"
                 },
@@ -779,7 +708,6 @@
                     "required": false,
                     "location": "postField",
                     "type": "number",
-                    "default": 1,
                     "description": "Browser page zoom factor. Float format, e.g. 1.2"
                 },
                 "viewport_size":{
