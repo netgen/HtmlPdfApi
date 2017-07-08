@@ -1,12 +1,33 @@
 {
     "name": "netgen/htmlpdfapi",
     "description": "Netgen HTMLPDFAPI",
+    "type": "symfony-bundle",
+    "keywords": [
+        "netgen",
+        "htmlpdfapi"
+    ],
+    "homepage": "https://github.com/netgen/HtmlPdfApi",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Netgen",
+            "homepage": "http://www.netgenlabs.com"
+        }
+    ],
     "require": {
         "guzzle/guzzle": "~3.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
     },
     "minimum-stability": "dev",
     "target-dir": "Netgen/HtmlPdfApi",
     "autoload": {
-        "psr-0": { "Netgen\\HtmlPdfApi": "" }
+        "psr-0": {
+            "Netgen\\HtmlPdfApi": ""
+        }
+    },
+    "scripts": {
+        "test": "@php vendor/bin/phpunit --colors=always"
     }
 }
