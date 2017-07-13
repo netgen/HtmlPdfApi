@@ -1,9 +1,11 @@
 language: php
 
+# cache
 cache:
     directories:
         - vendor
 
+# php versions
 matrix:
     # mark as finished before allow_failures are run
     fast_finish: true
