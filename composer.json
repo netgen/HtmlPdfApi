@@ -21,7 +21,6 @@
         "phpunit/phpunit": "^4.8.35|^5.7",
         "friendsofphp/php-cs-fixer": "~2.0"
     },
-    "minimum-stability": "dev",
     "target-dir": "Netgen/HtmlPdfApi",
     "autoload": {
         "psr-0": {
