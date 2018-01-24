@@ -21,6 +21,9 @@ branches:
   only:
     - master
 
+before_install:
+    - phpenv config-add travis.php.ini
+
 # install dependencies
 install:
     - travis_wait composer install
