@@ -1,48 +1,48 @@
+dist: xenial
+
 language: php
 
-# cache
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+
 cache:
-    directories:
-        - vendor
+  directories:
+    - $HOME/.cache/composer
 
-# php versions
+env:
+  - PHPUNIT_CONFIG="phpunit.xml.dist"
+
 matrix:
-    # mark as finished before allow_failures are run
-    fast_finish: true
-    include:
-        - php: 5.5
-        - php: 5.6
-        - php: 7.0
-        - php: 7.1
-        - php: 7.2
+  include:
+    - php: 7.2
+      env: RUN_COVERAGE="yes"
 
-# test only master (+ pull requests)
 branches:
   only:
     - master
 
-before_install:
-    - phpenv config-add travis.php.ini
+before_script:
+  - phpenv config-rm xdebug.ini || true
+  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
-# install dependencies
-install:
-    - travis_wait composer install
+  # Read-only OAuth token to work around GitHub API rate limits
+  - composer config -g github-oauth.github.com "4b3b0a83ea27d9544d3608a384c7a14625a98804"
 
-# execute phpunit as the script command
+  - composer update --no-suggest --prefer-dist
+
 script:
-  - ./vendor/bin/phpunit -d memory_limit=-1 --colors -c phpunit.xml.dist --coverage-clover=coverage.xml
+  - composer validate --strict
+  - if [ "$PHPUNIT_CONFIG" != "" ] ; then vendor/bin/phpunit -c $PHPUNIT_CONFIG --colors=always ; fi
+  - |
+    if [ "$RUN_COVERAGE" != "" ] ; then
+      php -dzend_extension=xdebug.so vendor/bin/phpunit --coverage-clover=coverage.xml --colors=always
+      bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+    fi
 
-# disable mail notifications
-notification:
+notifications:
   email: false
 
-# reduce depth (history) of git checkout
 git:
-  depth: 30
-
-# we don't need sudo
-sudo: false
-
-# send coverage to codecov.io
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  depth: 1
